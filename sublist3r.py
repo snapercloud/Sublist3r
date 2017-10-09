@@ -37,9 +37,9 @@ G = Y = B = R = W = G = Y = B = R = W = ''
 
 
 def parser_error(errmsg):
-    print("Usage: python " + sys.argv[0] + " [Options] use -h for help")
-    print(R + "Error: " + errmsg + W)
-    sys.exit()
+    if not silent:
+        print(R + "Error: " + errmsg + W)
+    sys.exit(1)
 
 
 def parse_args():
@@ -59,7 +59,8 @@ def parse_args():
 
 def write_file(filename, subdomains):
     # saving subdomains results to output file
-    print("%s[-] Saving results to file: %s%s%s%s" % (Y, W, R, filename, W))
+    if not silent:
+        print("%s[-] Saving results to file: %s%s%s%s" % (Y, W, R, filename, W))
     with open(str(filename), 'wt') as f:
         for subdomain in subdomains:
             f.write(subdomain + os.linesep)
@@ -908,9 +909,8 @@ def main(domain, threads, savefile, ports, silent, verbose, enable_bruteforce, e
             pscan = portscan(subdomains, ports)
             pscan.run()
 
-        elif not silent:
-            for subdomain in subdomains:
-                print(G + subdomain + W)
+        for subdomain in subdomains:
+            print(G + subdomain + W)
     return subdomains
 
 
@@ -925,4 +925,4 @@ if __name__ == "__main__":
     engines = args.engines
     if verbose or verbose is None:
         verbose = True
-    res = main(domain, threads, savefile, ports, silent=False, verbose=verbose, enable_bruteforce=enable_bruteforce, engines=engines)
+    res = main(domain, threads, savefile, ports, silent=True, verbose=verbose, enable_bruteforce=enable_bruteforce, engines=engines)
