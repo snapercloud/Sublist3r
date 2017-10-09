@@ -35,20 +35,8 @@ import requests.packages.urllib3
 # Console Colors
 G = Y = B = R = W = G = Y = B = R = W = ''
 
-def banner():
-    print("""%s
-                 ____        _     _ _     _   _____
-                / ___| _   _| |__ | (_)___| |_|___ / _ __
-                \___ \| | | | '_ \| | / __| __| |_ \| '__|
-                 ___) | |_| | |_) | | \__ \ |_ ___) | |
-                |____/ \__,_|_.__/|_|_|___/\__|____/|_|%s%s
-
-                # Coded By Ahmed Aboul-Ela - @aboul3la
-    """ % (R, W, Y))
-
 
 def parser_error(errmsg):
-    banner()
     print("Usage: python " + sys.argv[0] + " [Options] use -h for help")
     print(R + "Error: " + errmsg + W)
     sys.exit()
@@ -937,5 +925,4 @@ if __name__ == "__main__":
     engines = args.engines
     if verbose or verbose is None:
         verbose = True
-    banner()
     res = main(domain, threads, savefile, ports, silent=False, verbose=verbose, enable_bruteforce=enable_bruteforce, engines=engines)
