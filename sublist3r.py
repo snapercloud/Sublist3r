@@ -30,16 +30,7 @@ else:
     import urlparse
     import urllib
 
-# In case you cannot install some of the required development packages
-# there's also an option to disable the SSL warning:
-try:
-    import requests.packages.urllib3
-    requests.packages.urllib3.disable_warnings()
-except:
-    pass
-
-# Check if we are running this on windows platform
-is_windows = sys.platform.startswith('win')
+import requests.packages.urllib3
 
 # Console Colors
 if is_windows:
