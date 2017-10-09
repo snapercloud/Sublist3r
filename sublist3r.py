@@ -33,12 +33,7 @@ else:
 import requests.packages.urllib3
 
 # Console Colors
-G = '\033[92m'  # green
-Y = '\033[93m'  # yellow
-B = '\033[94m'  # blue
-R = '\033[91m'  # red
-W = '\033[0m'   # white
-
+G = Y = B = R = W = G = Y = B = R = W = ''
 
 def banner():
     print("""%s
